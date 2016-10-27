@@ -12,6 +12,16 @@ public class ZStatic {
 		//静态方法只能调用静态变量以及静态方法，非静态的要使用对象点方法来调用
 		System.out.println(version);
 		ZStatic z=new ZStatic();
+		//上面的对象初始化做了那几件事情
+		/*
+		 * 1将ZStatic.class加载到内存中
+		 * 2执行static代码块给类初始化
+		 * 3在堆内存开辟空间，并且初始化
+		 * 4在堆内存中建立对象特有属性，并且进行默认初始化
+		 * 6对对象进行构造代码块初始化
+		 * 7对对象进行构造函数初始化
+		 * 8将内存地址复制给z
+		 * */
 		z.nomain(args);
 		System.out.println(args);//[Ljava.lang.String;@6af62373主函数参数输出查看
 		System.out.println(args.length);//可以推断穿的是 new String[0]
