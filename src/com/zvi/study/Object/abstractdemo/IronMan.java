@@ -8,6 +8,6 @@ public abstract class IronMan {
 	abstract void fly();
 
 	void speak() {
-		System.out.println("¼Ö¿ËË¹ÈË¹¤ÖÇÄÜ"+version);
+		System.out.println("è´¾å…‹æ–¯äººå·¥æ™ºèƒ½"+version);
 	}
 }

@@ -10,7 +10,7 @@ public class IronManMark2 extends IronMan{
 	@Override
 	void fly() {
 		// TODO Auto-generated method stub
-		System.out.println("飞行速度5马赫！");
+		System.out.println("椋炶閫熷害5椹但");
 	}
 
 }
