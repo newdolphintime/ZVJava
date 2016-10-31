@@ -1,6 +1,6 @@
 package com.zvi.study.Object.abstractdemo;
 
-public class IronManMrak3 extends IronMan implements Myraligun{
+public class IronManMrak3 extends IronMan {
 
 	IronManMrak3(int version) {
 		super(version);
@@ -13,10 +13,13 @@ public class IronManMrak3 extends IronMan implements Myraligun{
 		System.out.println("飞行速度10马赫");
 	}
 
+	
+
+	
 	@Override
-	public void shot() {
+	void jarvis(Myraligun z) {
 		// TODO Auto-generated method stub
-		System.out.println("only my railgun can shot it!");
+		z.shot();
 	}
 
 }

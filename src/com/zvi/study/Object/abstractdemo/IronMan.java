@@ -10,4 +10,5 @@ public abstract class IronMan {
 	void speak() {
 		System.out.println("贾克斯人工智能"+version);
 	}
+	abstract void jarvis(Myraligun z);
 }
