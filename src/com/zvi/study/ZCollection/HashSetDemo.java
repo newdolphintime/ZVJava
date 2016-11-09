@@ -10,7 +10,7 @@ import java.util.Iterator;
  * 要有hashcode和equal来共同工作
  * 如果hashcode相同才会调用equal方法
  * */
-public class SetDemo {
+public class HashSetDemo {
 	public static void main(String[] args) {
 		HashSet hs = new HashSet();
 		hs.add(new Person("j1", 1));
