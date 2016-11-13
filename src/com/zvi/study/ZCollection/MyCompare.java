@@ -9,7 +9,7 @@ public class MyCompare implements Comparator{
 		// TODO Auto-generated method stub
 		Student t1=(Student)o1;
 		Student t2=(Student)o2;
-		return t1.name.compareTo(t2.name);
+		return t1.getName().compareTo(t2.getName());
 	}
    
 }

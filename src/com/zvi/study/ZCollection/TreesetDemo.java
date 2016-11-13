@@ -19,7 +19,7 @@ public class TreesetDemo {
 		Iterator it =ts.iterator();
 		while(it.hasNext()){
 			Student s =(Student)it.next();
-			System.out.println(s.name+"____"+s.age);
+			System.out.println(s.getName()+"____"+s.getAge());
 		}
 	}
 }

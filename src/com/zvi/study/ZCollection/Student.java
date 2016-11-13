@@ -1,32 +1,51 @@
 package com.zvi.study.ZCollection;
 
-import javax.management.RuntimeErrorException;
 
-public class Student implements Comparable {
-	public String name;
-	public int age;
 
+
+
+public class Student implements Comparable<Student> {
+	private String name;
+	private int age;
 	public Student(String name, int age) {
-		this.name = name;
-		this.age = age;
+		
+		// TODO Auto-generated constructor stub
+		this.name=name;
+		this.age=age;
 	}
-
+	public String getName() {
+		return name;
+	}
+	public int getAge() {
+		return age;
+	}
 	@Override
-	public int compareTo(Object o) {
-		//return 1;
+	public int hashCode() {
 		// TODO Auto-generated method stub
-		if (!(o instanceof Student)) {
-			throw new RuntimeException("不是Studen对象");
+		return this.name.hashCode()+age*34;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		if(!(obj instanceof Student)){
+			throw new ClassCastException("类型不匹配");
 		}
-		Student t = (Student) o;
-		System.out.println(this.name + "compare to" + t.name);
-		if (this.age - t.age > 0)
-
-			return 1;
-
-		if (this.age - t.age == 0) {
-			return this.name.compareTo(t.name);
+		Student s =(Student)obj;
+		return this.name.equals(s.name)&&this.age==s.age;
+	}
+	@Override
+	public int compareTo(Student o) {
+		// TODO Auto-generated method stub
+		int num =new Integer(this.age).compareTo(o.age);
+		if(num==0){
+			return this.name.compareTo(o.name);
 		}
-		return -1;
+		return num;
+		//return o.name.compareTo();
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return name+" "+age;
 	}
 }
