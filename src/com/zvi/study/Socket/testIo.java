@@ -11,7 +11,6 @@ public class testIo {
     public static void main(String[] args) throws IOException {
         BufferedReader bfre = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("-----这一步----");
-
         String line = null;
         while ((line = bfre.readLine())!=null){
             System.out.println(line);

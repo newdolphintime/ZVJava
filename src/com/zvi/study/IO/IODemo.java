@@ -55,7 +55,7 @@ public class IODemo {
 
 	private static void filereader() throws IOException {
 		// TODO Auto-generated method stub
-		FileReader fr = new FileReader("E:\\Books.0623\\《奸》系列（二）女警花.txt");
+		FileReader fr = new FileReader("F:\\AV\\Books.0623\\Books.0606\\Books\\Ｔ大校.txt");
 		int num=0;
 		char[]buff=new char[1024];
 		while ((num=fr.read(buff))!=-1) {
