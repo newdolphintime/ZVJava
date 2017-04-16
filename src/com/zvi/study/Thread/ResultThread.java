@@ -8,6 +8,8 @@ import java.util.concurrent.*;
 /**
  * Created by Zv on 2017/04/16.
  * 使用ExecutorService、Callable、Future实现有返回结果的多线程
+ * ExecutoreService提供了submit()方法，传递一个Callable，或Runnable，返回Future。
+ * 如果Executor后台线程池还没有完成Callable的计算，这调用返回Future对象的get()方法，会阻塞直到计算完成。
  */
 public class ResultThread {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
