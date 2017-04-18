@@ -40,7 +40,7 @@ class MyinerruptThread extends Thread{
             try {
                 wait();
             } catch (InterruptedException e) {
-                System.out.println(Thread.currentThread().getName()+" wait()方法啦>_<！");
+                System.out.println(Thread.currentThread().getName()+" wait()方法啦被intrupt一转头敲醒啦>_<！");
             }
         }
         System.out.println(Thread.currentThread().getName()+" run");
