@@ -1,13 +1,16 @@
 package com.zvi.study.Thread;
 
 import java.util.LinkedList;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Zv on 2017/04/22.
  */
 public class CoustomerProdcucerDemo2 {
     public static void main(String[] args) {
-        Resource re =new Resource();
+        Resource re = new Resource();
         Product pro = new Product(re);
         Customer cus = new Customer(re);
         Thread thread1 = new Thread(pro);
@@ -20,23 +23,29 @@ public class CoustomerProdcucerDemo2 {
         thread4.start();
     }
 }
-class Product implements Runnable{
+
+class Product implements Runnable {
     private Resource re;
-    public Product(Resource re){
+
+    public Product(Resource re) {
         this.re = re;
     }
+
     @Override
     public void run() {
-        while (true){
+        while (true) {
             re.set("商品");
         }
     }
 }
-class Customer implements Runnable{
+
+class Customer implements Runnable {
     private Resource re;
-    public Customer(Resource re){
+
+    public Customer(Resource re) {
         this.re = re;
     }
+
     @Override
     public void run() {
         while (true) {
@@ -44,33 +53,42 @@ class Customer implements Runnable{
         }
     }
 }
+
 class Resource {
     private int count = 1;
     private boolean flag = false;
     private String name;
+    Lock lock = new ReentrantLock();
+    Condition conpro = lock.newCondition();
+    Condition concus = lock.newCondition();
 
-    public synchronized void set(String name){
-        while(flag)
+    public void set(String name) {
+        lock.lock();
+        while (flag)
             try {
-                wait();
+                conpro.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        this.name = name +"_____"+count++;
-        System.out.println(Thread.currentThread().getName()+"生产者————————"+this.name);
+        this.name = name + "_____" + count++;
+        System.out.println(Thread.currentThread().getName() + "生产者————————" + this.name);
         flag = true;
-        this.notifyAll();
+        concus.signal();
+        lock.unlock();
     }
-    public synchronized  void out (){
-        while(!flag)
+
+    public void out() {
+        lock.lock();
+        while (!flag)
             try {
-                wait();
+                concus.await();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-        System.out.println(Thread.currentThread().getName()+"消费者——————————————"+this.name);
+        System.out.println(Thread.currentThread().getName() + "消费者——————————————" + this.name);
         flag = false;
-        this.notifyAll();
+        conpro.signal();
+        lock.unlock();
     }
 }
